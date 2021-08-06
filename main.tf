@@ -47,7 +47,7 @@ resource "azurerm_storage_container" "credential_container" {
   count                 = length(tls_private_key.linux_ssh_key)
   name                  = "credential"
   storage_account_name  = var.storage_account_name
-  container_access_type = "public"
+  container_access_type = var.container_access_type
 }
 
 resource "azurerm_storage_blob" "example" {
