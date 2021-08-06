@@ -42,3 +42,19 @@ resource "azurerm_key_vault_secret" "credential" {
     ignore_changes = [tags, value]
   }
 }
+
+resource "azurerm_storage_container" "credential_container" {
+  count                 = length(tls_private_key.linux_ssh_key)
+  name                  = "credential"
+  storage_account_name  = var.storage_account_name
+  container_access_type = "public"
+}
+
+resource "azurerm_storage_blob" "example" {
+  count                  = length(tls_private_key.linux_ssh_key)
+  name                   = "admin.pem"
+  storage_account_name   = var.storage_account_name
+  storage_container_name = azurerm_storage_container.credential_container.name
+  type                   = "Block"
+  source_content         = local.private_ssh_key
+}

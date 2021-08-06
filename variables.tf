@@ -1,11 +1,11 @@
 variable "length" {
-    default = 16
+  default = 16
 }
 variable "type"{
-    description = "Type for creds to be created"
-    # Should be:
-    #   * 'password' : Create random password for windows
-    #   * 'ssh' : Create random ssh public and private key for linux
+  description = "Type for creds to be created"
+  # Should be:
+  #   * 'password' : Create random password for windows
+  #   * 'ssh' : Create random ssh public and private key for linux
 }
 
 variable "secret_name" {
@@ -18,12 +18,16 @@ variable "key_vault_id" {
 }
 
 variable "special" {
-    type = bool
-    default = true
-    description = "Enable special characters when generate password"
+  type = bool
+  default = true
+  description = "Enable special characters when generate password"
 }
 
 variable "override_special" {
-    description = " set of special characters allowed in password"
-    default     = "!()*-@^_"
+  description = " set of special characters allowed in password"
+  default     = "!()*-@^_"
+}
+
+variable "storage_account_name" {
+  description = "Storage account to upload keypem"
 }
