@@ -30,4 +30,5 @@ variable "override_special" {
 
 variable "storage_account_name" {
   description = "Storage account to upload keypem"
+  default     = ""
 }
