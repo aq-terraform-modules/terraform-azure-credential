@@ -21,11 +21,11 @@ resource "tls_private_key" "linux_ssh_key" {
 }
 
 # Save private key file to local
-resource "local_file" "private_key" {
+/* resource "local_file" "private_key" {
   count        = length(tls_private_key.linux_ssh_key)
   content      = local.private_ssh_key
   filename     = "./creds/private_ssh_key.pem"
-}
+} */
 
 resource "azurerm_key_vault_secret" "credential" {
   key_vault_id         = var.key_vault_id
