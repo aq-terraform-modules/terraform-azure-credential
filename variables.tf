@@ -32,3 +32,9 @@ variable "storage_account_name" {
   description = "Storage account to upload keypem"
   default     = ""
 }
+
+variable "container_access_type" {
+  description = "Container access type"
+  default     = "container"
+}
+
